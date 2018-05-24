@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--标题栏-->
+    <declare-styleable name="TitleView">
+        <attr name="titleText" format="string" />
+        <attr name="titleMoreText" format="string" />
+        <attr name="titleMoreDrawable" format="reference" />
+        <attr name="titleColor" format="color" />
+        <attr name="showBack" format="boolean" />
+        <attr name="showDivider" format="boolean" />
+        <attr name="backBlack" format="boolean" />
+        <attr name="titleBackground" format="color" />
+    </declare-styleable>
+</resources>

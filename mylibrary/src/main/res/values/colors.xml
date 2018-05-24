@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="titleViewText">#2d2d2d</color>
+    <color name="gray33">#333333</color>
+</resources>
