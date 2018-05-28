@@ -12,9 +12,7 @@
         <item name="android:layout_margin">10dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
-
     </style>
-
 
     <style name="titleViewRightImageText">
         <item name="android:textSize">17sp</item>
@@ -48,7 +46,6 @@
 
 
     <style name="titleViewRightImage">
-        <item name="android:textSize">18sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingRight">10dp</item>
@@ -59,5 +56,13 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="titleViewRight2Image">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_toLeftOf">@id/ivMore</item>
+    </style>
 
 </resources>

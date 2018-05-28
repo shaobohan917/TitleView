@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rlyt_title"
+    android:id="@+id/rlContainer"
     style="@style/titleView">
 
     <ImageView
@@ -19,20 +19,14 @@
 
     <ImageView
         android:id="@+id/ivMoreSecond"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@id/ivMore"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:scaleType="center" />
-
+        style="@style/titleViewRight2Image" />
 
     <TextView
         android:id="@+id/tvMore"
         style="@style/titleViewRightImageText" />
 
     <View
+        android:id="@+id/vDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"

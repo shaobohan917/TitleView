@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 public class TitleView extends FrameLayout implements View.OnClickListener {
 
+    private Drawable mTitleBackDrawable;
     private Drawable mTitleMoreDrawable;
     private Drawable mTitleMore2Drawable;
     private boolean mShowDivider;
@@ -28,7 +30,6 @@ public class TitleView extends FrameLayout implements View.OnClickListener {
     private ImageView ivMore2;
     private String mTitleText;
     private ImageView ivBack;
-    private ImageView ivMoreSecond;
     private RelativeLayout rlyt_title;
     private LinearLayout llLine;
     private TextView tvMore;
@@ -61,6 +62,8 @@ public class TitleView extends FrameLayout implements View.OnClickListener {
                 mBackground = typedArray.getColor(attr, defStyleAttr);
             } else if (attr == R.styleable.TitleView_titleMoreText) {
                 mTitleMoreText = typedArray.getString(attr);
+            } else if (attr == R.styleable.TitleView_titleBackDrawable) {
+                mTitleBackDrawable = typedArray.getDrawable(attr);
             } else if (attr == R.styleable.TitleView_titleMoreDrawable) {
                 mTitleMoreDrawable = typedArray.getDrawable(attr);
             } else if (attr == R.styleable.TitleView_titleMore2Drawable) {
@@ -81,14 +84,11 @@ public class TitleView extends FrameLayout implements View.OnClickListener {
         ivBack = findViewById(R.id.ivBack);
         ivBack.setOnClickListener(this);
         ivBack.setVisibility(mIsShowBack ? VISIBLE : GONE);
+        ivBack.setImageDrawable(mTitleBackDrawable);
 
         tvTitle = findViewById(R.id.tvTitle);
         tvTitle.setText(mTitleText);
         tvTitle.setTextColor(mTitleColor == 0 ? Color.BLACK : mTitleColor);
-
-        tvMore = findViewById(R.id.tvMore);
-        tvMore.setText(mTitleMoreText);
-        tvMore.setOnClickListener(this);
 
         ivMore = findViewById(R.id.ivMore);
         ivMore.setImageDrawable(mTitleMoreDrawable);
@@ -96,8 +96,17 @@ public class TitleView extends FrameLayout implements View.OnClickListener {
         ivMore2 = findViewById(R.id.ivMoreSecond);
         ivMore2.setImageDrawable(mTitleMore2Drawable);
 
-        rlyt_title = findViewById(R.id.rlyt_title);
+        tvMore = findViewById(R.id.tvMore);
+        if(!TextUtils.isEmpty(mTitleMoreText)){
+            tvMore.setText(mTitleMoreText);
+            tvMore.setOnClickListener(this);
+        }
+
+        rlyt_title = findViewById(R.id.rlContainer);
         rlyt_title.setBackgroundColor(mBackground);
+
+        View vDivider = findViewById(R.id.vDivider);
+        vDivider.setVisibility(mShowDivider ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -126,97 +135,4 @@ public class TitleView extends FrameLayout implements View.OnClickListener {
         this.listener = listener;
     }
 
-
-    public void setTitle(String text) {
-        if (text.length() > 12) {
-            tvTitle.setText(text.substring(0, 12));
-        } else {
-            tvTitle.setText(text);
-        }
-    }
-
-    public void setTitleVisible(boolean visible) {
-        tvTitle.setVisibility(visible ? VISIBLE : GONE);
-    }
-
-    /**
-     * 设置右边的图片
-     *
-     * @param drawable
-     */
-    public void setMoreImg(int drawable, OnClickListener listener) {
-        ivMore = (ImageView) findViewById(R.id.ivMore);
-        ivMore.setVisibility(View.VISIBLE);
-        ivMore.setImageResource(drawable);
-        ivMore.setOnClickListener(listener);
-    }
-
-    /**
-     * 设置右边的点击事件
-     *
-     * @param listener
-     */
-    public void setMoreClickListener(OnClickListener listener) {
-        if (ivMore == null) {
-            ivMore = (ImageView) findViewById(R.id.ivMore);
-        }
-        ivMore.setVisibility(View.VISIBLE);
-        ivMore.setOnClickListener(listener);
-    }
-
-    /**
-     * 设置右边的文字
-     *
-     * @param text
-     */
-    public void setMoreText(String text, OnClickListener listener) {
-        tvMore.setVisibility(VISIBLE);
-        tvMore.setText(text);
-        tvMore.setOnClickListener(listener);
-    }
-
-    public void setBackListener(OnClickListener listener) {
-        ImageView ivBack = (ImageView) findViewById(R.id.ivBack);
-        ivBack.setVisibility(VISIBLE);
-        ivBack.setOnClickListener(listener);
-    }
-
-    public void setBackVisible(boolean visible) {
-        ivBack.setVisibility(visible ? VISIBLE : GONE);
-    }
-
-    /**
-     * 设置右边的图片
-     *
-     * @param drawable
-     */
-    public void setMoreSecondImg(int drawable, OnClickListener listener) {
-        ivMoreSecond = findViewById(R.id.ivMoreSecond);
-        ivMoreSecond.setVisibility(View.VISIBLE);
-        ivMoreSecond.setImageResource(drawable);
-        ivMoreSecond.setOnClickListener(listener);
-    }
-
-    public void setTitleTextColor(int color) {
-        tvTitle.setTextColor(color);
-        tvMore.setTextColor(color);
-//        ivBack.setImageResource(R.drawable.icon_back_white);
-    }
-
-    public void setBackDrawable(int drawable) {
-        ivBack.setImageResource(drawable);
-    }
-
-    /**
-     * 分割线是否可见
-     *
-     * @param isInvisible
-     */
-    public void setSplitLineInvisible(boolean isInvisible) {
-        if (isInvisible) llLine.setVisibility(GONE);
-    }
-
-    public void setBackColorWhite(boolean b) {
-//        if (b) ivBack.setImageResource(R.drawable.icon_back_white);
-    }
 }

@@ -5,6 +5,7 @@
         <attr name="titleMoreText" format="string" />
         <attr name="titleMoreDrawable" format="reference" />
         <attr name="titleMore2Drawable" format="reference" />
+        <attr name="titleBackDrawable" format="reference" />
         <attr name="titleColor" format="color" />
         <attr name="showBack" format="boolean" />
         <attr name="showDivider" format="boolean" />

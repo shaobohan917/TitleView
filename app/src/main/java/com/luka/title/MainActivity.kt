@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         titleView.setOnTitleClickListener(object : TitleView.OnTitleClickListener {
-            override fun onMoreTextClick() {
-                Log.d("luka", "设置")
+            override fun onBackClick() {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onMoreImgClick() {
@@ -26,9 +26,8 @@ class MainActivity : AppCompatActivity() {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
-            override fun onBackClick() {
-
-
+            override fun onMoreTextClick() {
+                Log.d("luka", "设置")
             }
 
         })
