@@ -13,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.luka.mylibrary.R;
-
 public class TitleView extends FrameLayout implements View.OnClickListener {
 
     private Drawable mTitleBackDrawable;
@@ -31,7 +29,7 @@ public class TitleView extends FrameLayout implements View.OnClickListener {
     private ImageView ivMore2;
     private String mTitleText;
     private ImageView ivBack;
-    private RelativeLayout rlyt_title;
+    private RelativeLayout rlContainer;
     private TextView tvMore;
 
     private OnBackClickListener mBackClickListener;
@@ -105,8 +103,8 @@ public class TitleView extends FrameLayout implements View.OnClickListener {
             tvMore.setOnClickListener(this);
         }
 
-        rlyt_title = findViewById(R.id.rlContainer);
-        rlyt_title.setBackgroundColor(mBackground);
+        rlContainer = findViewById(R.id.rlContainer);
+        rlContainer.setBackgroundColor(mBackground);
 
         View vDivider = findViewById(R.id.vDivider);
         vDivider.setVisibility(mShowDivider ? View.VISIBLE : View.GONE);
