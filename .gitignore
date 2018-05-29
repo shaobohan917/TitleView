@@ -1,6 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
+/.gradle/
 /.idea/
 /.idea/workspace.xml
-/.gradle/buildOutputCleanup/buildOutputCleanup.lock
-/.gradle/buildOutputCleanup/cache.properties
-/.gradle/buildOutputCleanup/outputFiles.bin
+.gradle/buildOutputCleanup/
+app/libs/
+build/kotlin/
+library/libs/
+library/src/main/res/drawable/

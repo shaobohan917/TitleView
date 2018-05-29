@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.luka.mylibrary.TitleView
+    <com.luka.library.TitleView
         android:id="@+id/titleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +15,6 @@
         app:showDivider="true"
         app:titleMoreText="设置"
         app:titleBackDrawable="@mipmap/ic_launcher_round"
-        app:titleMoreDrawable="@mipmap/ic_back"
         app:titleMore2Drawable="@mipmap/ic_launcher"
         app:titleText="hehe" />
 

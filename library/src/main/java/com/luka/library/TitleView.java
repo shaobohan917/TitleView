@@ -1,4 +1,4 @@
-package com.luka.mylibrary;
+package com.luka.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,9 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.luka.mylibrary.R;
 
 public class TitleView extends FrameLayout implements View.OnClickListener {
 
@@ -31,10 +32,12 @@ public class TitleView extends FrameLayout implements View.OnClickListener {
     private String mTitleText;
     private ImageView ivBack;
     private RelativeLayout rlyt_title;
-    private LinearLayout llLine;
     private TextView tvMore;
 
-    private OnTitleClickListener listener;
+    private OnBackClickListener mBackClickListener;
+    private OnMoreTextClickListener mMoreTextClickListener;
+    private OnMoreImgClickListener mMoreImgClickListener;
+    private OnMoreImg2ClickListener mMoreImg2ClickListener;
 
     public TitleView(Context context) {
         this(context, null);
@@ -97,7 +100,7 @@ public class TitleView extends FrameLayout implements View.OnClickListener {
         ivMore2.setImageDrawable(mTitleMore2Drawable);
 
         tvMore = findViewById(R.id.tvMore);
-        if(!TextUtils.isEmpty(mTitleMoreText)){
+        if (!TextUtils.isEmpty(mTitleMoreText)) {
             tvMore.setText(mTitleMoreText);
             tvMore.setOnClickListener(this);
         }
@@ -111,28 +114,52 @@ public class TitleView extends FrameLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (listener != null) {
-            if (v.getId() == R.id.tvMore) {
-                listener.onMoreTextClick();
+        if (v.getId() == R.id.tvMore) {
+            if (mMoreTextClickListener != null) {
+                mMoreTextClickListener.onMoreTextClick();
             }
-            if (v.getId() == R.id.ivBack) {
-                listener.onBackClick();
+            if (mBackClickListener != null) {
+                mBackClickListener.onBackClick();
+            }
+            if (mMoreImgClickListener != null) {
+                mMoreImgClickListener.onMoreImgClick();
+            }
+            if (mMoreImg2ClickListener != null) {
+                mMoreImg2ClickListener.onMoreImg2Click();
             }
         }
     }
 
-    public interface OnTitleClickListener {
+    public interface OnBackClickListener {
         void onBackClick();
+    }
 
+    public interface OnMoreTextClickListener {
         void onMoreTextClick();
+    }
 
+    public interface OnMoreImgClickListener {
         void onMoreImgClick();
+    }
 
+    public interface OnMoreImg2ClickListener {
         void onMoreImg2Click();
     }
 
-    public void setOnTitleClickListener(OnTitleClickListener listener) {
-        this.listener = listener;
+    public void setOnMoreTextClickListener(OnMoreTextClickListener listener) {
+        this.mMoreTextClickListener = listener;
+    }
+
+    public void setOnBackClickListener(OnBackClickListener listener) {
+        this.mBackClickListener = listener;
+    }
+
+    public void setOnImgkClickListener(OnMoreImgClickListener listener) {
+        this.mMoreImgClickListener = listener;
+    }
+
+    public void setOnImg2kClickListener(OnMoreImg2ClickListener listener) {
+        this.mMoreImg2ClickListener = listener;
     }
 
 }
